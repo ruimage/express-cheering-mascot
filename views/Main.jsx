@@ -1,7 +1,7 @@
 const React = require('react');
 const Layout = require('./Layout');
 
-module.exports = function Main({ signText }) {
+module.exports = function Main({signText}) {
   return (
     <Layout>
       <div className="container">
@@ -12,9 +12,9 @@ module.exports = function Main({ signText }) {
           <form id="cheer_caller" action="/cheers" method="post">
             <label htmlFor="text">
               Cheer name:
-              <input type="text" name="cheer_name" />
+              <input type="text" name="cheer_name"/>
             </label>
-            <input type="submit" value="Call it out!" />
+            <input type="submit" value="Call it out!"/>
           </form>
         </section>
 
