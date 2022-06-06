@@ -10,6 +10,7 @@ const path = require('path');
 const ReactDOMServer = require('react-dom/server');
 const React = require('react');
 const Main = require('./views/Main');
+const {Cheers} = require("./views/Cheers");
 
 const app = express();
 
@@ -41,6 +42,17 @@ app.get('/', (req, res) => {
   // отправляем отрендеренный HTML и закрываем соединение
   res.end(html);
 });
+
+app.post('/cheers',(req, res) => {
+
+  const main = React.createElement(Cheers, req.body);
+  // рендерим элемент и получаем HTML (в виде строки)
+  const html = ReactDOMServer.renderToStaticMarkup(main);
+  // отправляем первую строку нашего HTML-документа
+  res.write('<!DOCTYPE html>');
+  // отправляем отрендеренный HTML и закрываем соединение
+  res.end(html);
+})
 
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
